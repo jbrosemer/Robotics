@@ -12,9 +12,6 @@ try:
         display.lcd_display_string("Not enough time",1)
         display.lcd_display_string(datetime.now().strftime("%S"),2)
         kit.servo[0].angle = minute*3
-        time.sleep(1)
-        time.sleep(1)
 except KeyboardInterrupt:
     kit.servo[0].angle = 0
     print("Exit")
-    
