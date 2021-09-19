@@ -16,7 +16,7 @@ try:
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("Not enough time",1)
         #print current seconds
-        display.lcd_display_string(str(seconds),2)
+        display.lcd_display_string(datetime.now().strftime("%S"),2)
         kit.servo[0].angle = seconds*3
 except KeyboardInterrupt:
     kit.servo[0].angle = 0
