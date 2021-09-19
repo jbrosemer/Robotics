@@ -7,10 +7,10 @@ kit = ServoKit(channels=16)
 display = drivers.Lcd()
 try:
     while True:
-        minute = int(datetime.now().strftime("%M"))
+        minute = int(datetime.now().strftime("%S"))
         print(minute)
         display.lcd_display_string("Not enough time",1)
-        display.lcd_display_string(datetime.now().strftime("%M"),2)
+        display.lcd_display_string(datetime.now().strftime("%S"),2)
         kit.servo[0].angle = minute*3
         time.sleep(1)
         time.sleep(1)
