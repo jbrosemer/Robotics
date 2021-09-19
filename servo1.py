@@ -7,6 +7,8 @@ kit = ServoKit(channels=16)
 display = drivers.Lcd()
 try:
     while True:
+        minute = int(datetime.now().strftime("%M"))
+        print(minute)
         display.lcd_display_string("Not enough time",1)
         display.lcd_display_string(datetime.now().strftime("%M"),2)
         kit.servo[0].angle = 180
