@@ -15,3 +15,4 @@ try:
 except KeyboardInterrupt:
     kit.servo[0].angle = 0
     print("Exit")
+    display.lcd_clear()
