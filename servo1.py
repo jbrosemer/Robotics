@@ -19,29 +19,41 @@ debouncer = 0
 multiplier = 1
 try:
     while True:
-        if(current):
+        if current:
             #get the current #of seconds in the minute and set it as an integer
             #AKA we are not speeding up time
             seconds = int(datetime.now().strftime("%S"))
             tensminutes = minuter(int(datetime.now().strftime("%M")))
             onesminutes = int(datetime.now().strftime("%M"))
             hours = int(datetime.now().strftime("%H"))
-            if(hours > 12):
+            if hours > 12:
                 hours-=12
-            if(button1.is_pressed):
+            if button1.is_pressed:
                 debouncer+=1
                 print(debouncer)
-                if(debouncer > 5):
+                if debouncer > 5:
                     current = False
+                    multiplier+=1
             else:
                 debouncer = 0
         else:
             seconds = seconds + multiplier
+            if seconds > 59:
+                seconds = 0
+                onesminutes+=1
+                if onesminutes > 9:
+                    onesminutes = 0
+                    tensminutes += 1
+                    if tensminutes > 5:
+                        tensminutes = 0
+                        hours += 1
+                        if hours > 12:
+                            hours -= 12
 
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
         #print current seconds
-        display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes) +  ":" + str(seconds),2)
+        display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
         kit.servo[3].angle = (onesminutes%10) * 20
         kit.servo[2].angle = seconds*3
         kit.servo[1].angle = tensminutes*36
@@ -49,6 +61,7 @@ try:
 
 #exit the loop on pressing ctrl+c
 except KeyboardInterrupt:
+    display.lcd_clear()
     #reset Servo angle
     kit.servo[0].angle = 0
     kit.servo[1].angle = 0
