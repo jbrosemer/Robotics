@@ -25,7 +25,7 @@ try:
             #AKA we are not speeding up time
             seconds = int(datetime.now().strftime("%S"))
             tensminutes = minuter(int(datetime.now().strftime("%M")))
-            onesminutes = int(datetime.now().strftime("%M"))
+            onesminutes = int(datetime.now().strftime("%M")%10)
             hours = int(datetime.now().strftime("%H"))
             if hours > 12:
                 hours-=12
@@ -42,6 +42,7 @@ try:
             multiplier = 1
             debouncer = 0
         else:
+            #onesminutes = onesminutes%10
             if button1.is_pressed:
                 debouncer += 1
                 if debouncer > 5:
