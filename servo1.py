@@ -46,6 +46,7 @@ try:
                 debouncer += 1
                 if debouncer > 5:
                     multiplier = multiplier * 2
+                    debouncer = 0
             else:
                 debouncer = 0
             seconds = seconds + multiplier
@@ -55,7 +56,12 @@ try:
                 onesminutes+=1
                 if onesminutes > 9:
                     onesminutes = 0
-                    tensminutes += 1
+                    if multiplier > 100 & multiplier < 200:
+                        tensminutes += 2
+                    elif multiplier > 200:
+                        tensminutes += 4
+                    else:
+                        tensminutes += 1
                     if tensminutes > 5:
                         tensminutes = 0
                         hours += 1
