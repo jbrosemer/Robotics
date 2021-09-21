@@ -23,7 +23,8 @@ try:
             #get the current #of seconds in the minute and set it as an integer
             #AKA we are not speeding up time
             seconds = int(datetime.now().strftime("%S"))
-            minutes = int(datetime.now().strftime("%M"))
+            tensminutes = minuter(int(datetime.now().strftime("%M")))
+            onesminutes = int(datetime.now().strftime("%M"))
             hours = int(datetime.now().strftime("%H"))
             if(hours > 12):
                 hours-=12
@@ -41,8 +42,9 @@ try:
         display.lcd_display_string("What time is it?",1)
         #print current seconds
         display.lcd_display_string(str(hours) + ":" + datetime.now().strftime("%M") + ":" + datetime.now().strftime("%S"),2)
+        kit.servo[3].angle = (onesminutes%10) * 20
         kit.servo[2].angle = seconds*3
-        kit.servo[1].angle = minutes*3
+        kit.servo[1].angle = tensminutes*36
         kit.servo[0].angle = (hours%10) * 20
 
 #exit the loop on pressing ctrl+c
