@@ -58,7 +58,7 @@ try:
                 elif multiplier > 200:
                     onesminutes += 4
                 else:
-                    onesminutes += 1
+                    #onesminutes += 1
                 if onesminutes > 9:
                     onesminutes = 0
                     tensminutes += 1
