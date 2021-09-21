@@ -41,7 +41,7 @@ try:
             current = True
             multiplier = 1
             debouncer = 0
-        else:
+        elif multiplier > 1:
             #onesminutes = onesminutes%10
             if button1.is_pressed:
                 debouncer += 1
