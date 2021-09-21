@@ -36,12 +36,12 @@ try:
             else:
                 debouncer = 0
         else:
-            seconds = seconds
+            seconds = seconds + multiplier
 
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
         #print current seconds
-        display.lcd_display_string(str(hours) + ":" + datetime.now().strftime("%M") + ":" + datetime.now().strftime("%S"),2)
+        display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes) +  ":" + str(seconds),2)
         kit.servo[3].angle = (onesminutes%10) * 20
         kit.servo[2].angle = seconds*3
         kit.servo[1].angle = tensminutes*36
