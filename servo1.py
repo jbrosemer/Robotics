@@ -27,6 +27,7 @@ try:
                 hours-=12
             if(button1.is_pressed):
                 debouncer+=1
+                print(debouncer)
                 if(debouncer > 5):
                     current = False
                 elif(debouncer > 100):
