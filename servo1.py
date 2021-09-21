@@ -25,7 +25,7 @@ try:
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
         #print current seconds
-        display.lcd_display_string(datetime.now().strftime("%M") + datetime.now().strftime("%S"),2)
+        display.lcd_display_string(datetime.now().strftime("%H") + ":" + datetime.now().strftime("%M") + ":" + datetime.now().strftime("%S"),2)
         kit.servo[2].angle = seconds*3
         kit.servo[1].angle = minutes*3
         kit.servo[0].angle = (hours%10) * 20
