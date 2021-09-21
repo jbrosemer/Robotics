@@ -22,8 +22,6 @@ try:
             seconds = int(datetime.now().strftime("%S"))
             minutes = int(datetime.now().strftime("%M"))
             hours = int(datetime.now().strftime("%H"))
-        else:
-            
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
         #print current seconds
