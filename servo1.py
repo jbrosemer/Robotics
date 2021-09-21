@@ -15,6 +15,7 @@ display = drivers.Lcd()
 #led is on gpio pin 4
 button1 = Button(4)
 button2 = Button(17)
+led1 = LED(18)
 current = True
 debouncer = 0
 multiplier = 1
@@ -77,6 +78,11 @@ try:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes % 10) + ":0" + str(seconds),2)
         else:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
+        if hours > 9:
+            led1.on()
+        else:
+            led1.off()
+
         kit.servo[3].angle = (onesminutes%10) * 20
         kit.servo[2].angle = seconds*3
         kit.servo[1].angle = tensminutes*36
