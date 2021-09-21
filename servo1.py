@@ -3,6 +3,7 @@ import time
 #https://github.com/the-raspberry-pi-guy/lcd
 import drivers
 #importing servokit to drive multiple servos using servodriver
+from minuter import *
 from adafruit_servokit import ServoKit
 from gpiozero import LED, Button
 #import time of day library
@@ -15,6 +16,7 @@ display = drivers.Lcd()
 button1 = Button(4)
 current = True
 debouncer = 0
+multiplier = 1
 try:
     while True:
         if(current):
@@ -30,10 +32,10 @@ try:
                 print(debouncer)
                 if(debouncer > 5):
                     current = False
-                elif(debouncer > 100):
-                    current = True
             else:
                 debouncer = 0
+        else:
+            seconds = seconds
 
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
