@@ -25,7 +25,7 @@ try:
             #AKA we are not speeding up time
             seconds = int(datetime.now().strftime("%S"))
             tensminutes = minuter(int(datetime.now().strftime("%M")))
-            onesminutes = int(datetime.now().strftime("%M")%10)
+            onesminutes = int(datetime.now().strftime("%M"))%10
             hours = int(datetime.now().strftime("%H"))
             if hours > 12:
                 hours-=12
