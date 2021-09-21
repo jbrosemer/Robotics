@@ -14,6 +14,7 @@ display = drivers.Lcd()
 #led is on gpio pin 4
 button1 = Button(4)
 current = True
+debouncer = 0
 try:
     while True:
         if(current):
@@ -24,6 +25,13 @@ try:
             hours = int(datetime.now().strftime("%H"))
             if(hours > 12):
                 hours-=12
+            if(button1.is_pressed):
+                debouncer+=1
+                if(debouncer > 5):
+                    current = False
+            else:
+                debouncer = 0
+
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
         #print current seconds
