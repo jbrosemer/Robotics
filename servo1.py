@@ -29,6 +29,8 @@ try:
                 debouncer+=1
                 if(debouncer > 5):
                     current = False
+                elif(debouncer > 100):
+                    current = True
             else:
                 debouncer = 0
 
