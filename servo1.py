@@ -22,6 +22,8 @@ try:
             seconds = int(datetime.now().strftime("%S"))
             minutes = int(datetime.now().strftime("%M"))
             hours = int(datetime.now().strftime("%H"))
+            if(hours > 12):
+                hours-=12
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
         #print current seconds
