@@ -53,10 +53,10 @@ try:
             print(multiplier)
             if seconds > 59:
                 seconds = 0
-                if multiplier > 100 & multiplier < 200:
+                if multiplier < 100:
+                    onesminutes += 1
+                elif multiplier > 100:
                     onesminutes += 2
-                elif multiplier > 200:
-                    onesminutes += 4
                 else:
                     print(onesminutes)
                 if onesminutes > 9:
