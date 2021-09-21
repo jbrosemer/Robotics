@@ -78,7 +78,7 @@ try:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes % 10) + ":0" + str(seconds),2)
         else:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
-        if hours > 9:
+        if seconds%2 == 1:
             led1.on()
         else:
             led1.off()
