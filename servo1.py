@@ -14,6 +14,7 @@ kit = ServoKit(channels=16)
 display = drivers.Lcd()
 #led is on gpio pin 4
 button1 = Button(4)
+button2 = Button(17)
 current = True
 debouncer = 0
 multiplier = 1
@@ -30,13 +31,21 @@ try:
                 hours-=12
             if button1.is_pressed:
                 debouncer+=1
-                print(debouncer)
                 if debouncer > 5:
                     current = False
                     multiplier+=1
+                    debouncer = 0
             else:
                 debouncer = 0
+        elif button2.is_pressed:
+            current = True
         else:
+            if button1.is_pressed:
+                debouncer += 1
+                if debouncer > 5:
+                    multiplier = multiplier * 2
+            else:
+                debouncer = 0
             seconds = seconds + multiplier
             if seconds > 59:
                 seconds = 0
@@ -49,6 +58,7 @@ try:
                         hours += 1
                         if hours > 12:
                             hours -= 12
+
 
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
