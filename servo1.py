@@ -12,17 +12,21 @@ kit = ServoKit(channels=16)
 #define the lcd drivers to be used
 display = drivers.Lcd()
 #led is on gpio pin 4
-led = LED(4)
+button1 = Button(4)
+current = True
 try:
     while True:
-        #get the current #of seconds in the minute and set it as an integer
-        seconds = int(datetime.now().strftime("%S"))
-        minutes = int(datetime.now().strftime("%M"))
-        hours = int(datetime.now().strftime("%H"))
+        if(current):
+            #get the current #of seconds in the minute and set it as an integer
+            #AKA we are not speeding up time
+            seconds = int(datetime.now().strftime("%S"))
+            minutes = int(datetime.now().strftime("%M"))
+            hours = int(datetime.now().strftime("%H"))
+
         #print using lcd_display_string my apparent lack of time
-        display.lcd_display_string("Not enough time",1)
+        display.lcd_display_string("What time is it?",1)
         #print current seconds
-        display.lcd_display_string(datetime.now().strftime("%S"),2)
+        display.lcd_display_string(datetime.now().strftime("%M"), datetime.now().strftime("%S"),2)
         kit.servo[2].angle = seconds*3
         kit.servo[1].angle = minutes*3
         kit.servo[0].angle = (hours%10) * 20
