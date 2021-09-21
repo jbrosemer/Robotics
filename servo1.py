@@ -73,7 +73,10 @@ try:
         #print using lcd_display_string my apparent lack of time
         display.lcd_display_string("What time is it?",1)
         #print current seconds
-        display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
+        if seconds < 9:
+            display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes % 10) + ":0" + str(seconds),2)
+        else:
+            display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
         kit.servo[3].angle = (onesminutes%10) * 20
         kit.servo[2].angle = seconds*3
         kit.servo[1].angle = tensminutes*36
