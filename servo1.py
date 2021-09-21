@@ -54,7 +54,6 @@ try:
             print(multiplier)
             if seconds > 59:
                 seconds = 0
-                print(onesminutes)
                 if multiplier < 100:
                     onesminutes += 1
                 elif multiplier > 100:
