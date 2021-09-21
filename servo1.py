@@ -39,6 +39,8 @@ try:
                 debouncer = 0
         elif button2.is_pressed:
             current = True
+            multiplier = 1
+            debouncer = 0
         else:
             if button1.is_pressed:
                 debouncer += 1
