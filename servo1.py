@@ -85,7 +85,7 @@ try:
             led1.off()
 
         kit.servo[3].angle = (onesminutes%10) * 20
-        kit.servo[2].angle = seconds*3
+        #kit.servo[2].angle = seconds*3
         kit.servo[1].angle = tensminutes*36
         kit.servo[0].angle = (hours%10) * 20
 
