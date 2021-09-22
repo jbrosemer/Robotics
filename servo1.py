@@ -12,9 +12,9 @@ from datetime import datetime
 kit = ServoKit(channels=16)
 #define the lcd drivers to be used
 display = drivers.Lcd()
-#led is on gpio pin 4
 button1 = Button(4)
-button2 = Button(17)
+#button2 = Button(17)
+led2 = LED(17)
 led1 = LED(18)
 current = True
 debouncer = 0
@@ -79,9 +79,9 @@ try:
         else:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
         if seconds%2 == 1:
-            led1.on()
+            led2.on()
         else:
-            led1.off()
+            led2.off()
 
         kit.servo[3].angle = (onesminutes%10) * 20
         kit.servo[2].angle = seconds*3
