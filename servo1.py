@@ -51,8 +51,6 @@ try:
             else:
                 debouncer = 0
             seconds = seconds + multiplier
-            if seconds > 0:
-                seconds - 1
             print(multiplier)
             if seconds > 59:
                 seconds = 0
