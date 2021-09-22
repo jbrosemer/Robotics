@@ -81,7 +81,8 @@ try:
             led1.on()
         else:
             led1.off()
-
+        print("ones minutes" + str(onesminutes))
+        print("tens minutes" + str(tensminutes))
         kit.servo[3].angle = (onesminutes%10) * 20
         #kit.servo[2].angle = seconds*3
         kit.servo[1].angle = tensminutes*36
