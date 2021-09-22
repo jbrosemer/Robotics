@@ -78,9 +78,9 @@ try:
         else:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
         if seconds%2 == 1:
-            led2.on()
+            led1.on()
         else:
-            led2.off()
+            led1.off()
 
         kit.servo[3].angle = (onesminutes%10) * 20
         kit.servo[2].angle = seconds*3
