@@ -11,7 +11,7 @@ from datetime import datetime
 #set number of servo channels
 kit = ServoKit(channels=16)
 #define the lcd drivers to be used
-display = drivers.Lcd()
+# display = drivers.Lcd()
 button1 = Button(4)
 button2 = Button(17)
 led1 = LED(18)
