@@ -59,7 +59,7 @@ try:
                     onesminutes += 1
                 elif multiplier > 100:
                     onesminutes += 2
-                if onesminutes > 8:
+                if onesminutes > 9:
                     onesminutes = 0
                     tensminutes += 1
                     if tensminutes > 5:
@@ -73,9 +73,9 @@ try:
         display.lcd_display_string("What time is it?",1)
         #print current seconds
         if seconds < 9:
-            display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes % 10) + ":0" + str(seconds),2)
+            display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes) + ":0" + str(seconds),2)
         else:
-            display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
+            display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes) + ":" + str(seconds),2)
         if seconds%2 == 1:
             led1.on()
         else:
