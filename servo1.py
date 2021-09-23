@@ -11,7 +11,7 @@ from datetime import datetime
 #set number of servo channels
 kit = ServoKit(channels=16)
 #define the lcd drivers to be used
-# display = drivers.Lcd()
+display = drivers.Lcd()
 button1 = Button(4)
 button2 = Button(17)
 led1 = LED(18)
@@ -71,18 +71,16 @@ try:
 
 
         #print using lcd_display_string my apparent lack of time
-        #display.lcd_display_string("What time is it?",1)
+        display.lcd_display_string("What time is it?",1)
         #print current seconds
-        #if seconds < 9:
-            #display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes % 10) + ":0" + str(seconds),2)
-        #else:
-            #display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
+        if seconds < 9:
+            display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes % 10) + ":0" + str(seconds),2)
+        else:
+            display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes%10) + ":" + str(seconds),2)
         if seconds%2 == 1:
             led1.on()
         else:
             led1.off()
-        print("ones minutes " + str(onesminutes))
-        print("tens minutes " + str(tensminutes))
         kit.servo[3].angle = (onesminutes) * 20
         #kit.servo[2].angle = seconds*3
         kit.servo[1].angle = tensminutes*36
@@ -90,11 +88,11 @@ try:
 
 #exit the loop on pressing ctrl+c
 except KeyboardInterrupt:
-    #display.lcd_clear()
+    display.lcd_clear()
     #reset Servo angle
     kit.servo[0].angle = 0
     kit.servo[1].angle = 0
     kit.servo[2].angle = 0
     print("Exit")
     #clear the lcd
-    #display.lcd_clear()
+    display.lcd_clear()
