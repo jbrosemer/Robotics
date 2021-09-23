@@ -52,6 +52,7 @@ try:
                 debouncer = 0
             seconds = seconds + multiplier
             print(multiplier)
+            print(onesminutes)
             if seconds > 59:
                 seconds = 0
                 if multiplier < 100:
