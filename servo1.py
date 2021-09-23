@@ -12,9 +12,13 @@ from datetime import datetime
 kit = ServoKit(channels=16)
 #define the lcd drivers to be used
 display = drivers.Lcd()
+#speed up button
 button1 = Button(4)
+#normalize button
 button2 = Button(17)
+#hours LED
 led1 = LED(21)
+#minutes LED
 led2 = LED(26)
 current = True
 debouncer = 0
@@ -22,14 +26,16 @@ multiplier = 1
 try:
     while True:
         if current:
-            #get the current #of seconds in the minute and set it as an integer
+            #get all the times and set them as ints
             #AKA we are not speeding up time
             seconds = int(datetime.now().strftime("%S"))
             tensminutes = minuter(int(datetime.now().strftime("%M")))
             onesminutes = int(datetime.now().strftime("%M"))%10
             hours = int(datetime.now().strftime("%H"))
+            #unmilitarize the time
             if hours > 12:
                 hours-=12
+            #check if speed up button is pressed
             if button1.is_pressed:
                 debouncer+=1
                 if debouncer > 5:
@@ -37,13 +43,14 @@ try:
                     multiplier+=1
                     debouncer = 0
             else:
-                debouncer = 0
+                #constantly check if normalize button is being pressed while in sped up time
         elif button2.is_pressed:
+            #go back to current time and reset multiplier
             current = True
             multiplier = 1
             debouncer = 0
         elif multiplier > 1:
-            #onesminutes = onesminutes%10
+            #check if multiplier is greater than 1
             if button1.is_pressed:
                 debouncer += 1
                 if debouncer > 5:
@@ -77,7 +84,7 @@ try:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes) + ":0" + str(seconds),2)
         else:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes) + ":" + str(seconds),2)
-        if seconds%2 == 1:
+        if seconds%2 == 1 | multiplier > 1:
             led2.on()
         else:
             led2.off()
