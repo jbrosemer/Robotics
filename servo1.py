@@ -14,7 +14,7 @@ kit = ServoKit(channels=16)
 display = drivers.Lcd()
 button1 = Button(4)
 button2 = Button(17)
-led1 = LED(23)
+led1 = LED(21)
 current = True
 debouncer = 0
 multiplier = 1
@@ -76,7 +76,7 @@ try:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes) + ":0" + str(seconds),2)
         else:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes) + ":" + str(seconds),2)
-        if seconds%2 == 1:
+        if hours > 9:
             led1.on()
         else:
             led1.off()
