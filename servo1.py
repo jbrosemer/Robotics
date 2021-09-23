@@ -85,6 +85,7 @@ try:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) + str(onesminutes) + ":0" + str(seconds),2)
         else:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes) + ":" + str(seconds),2)
+        print(seconds)
         if seconds%2 == 1:
             led2.on()
         else:
