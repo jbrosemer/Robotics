@@ -80,18 +80,18 @@ try:
             led1.on()
         else:
             led1.off()
-        kit.servo[3].angle = (onesminutes) * 20
+        kit.servo[3].angle = 180 - ((onesminutes) * 20)
         #kit.servo[2].angle = seconds*3
-        kit.servo[1].angle = 180 - tensminutes*36
-        kit.servo[0].angle = (hours%10) * 20
+        kit.servo[1].angle = tensminutes*36
+        kit.servo[0].angle = 180 - ((hours%10) * 20)
 
 #exit the loop on pressing ctrl+c
 except KeyboardInterrupt:
     display.lcd_clear()
     #reset Servo angle
-    kit.servo[0].angle = 0
-    kit.servo[1].angle = 180
-    kit.servo[2].angle = 0
+    kit.servo[0].angle = 180
+    kit.servo[1].angle = 0
+    kit.servo[2].angle = 180
     print("Exit")
     #clear the lcd
     display.lcd_clear()
