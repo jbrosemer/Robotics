@@ -14,7 +14,7 @@ kit = ServoKit(channels=16)
 display = drivers.Lcd()
 button1 = Button(4)
 button2 = Button(17)
-led1 = LED(5)
+led1 = LED(23)
 current = True
 debouncer = 0
 multiplier = 1
