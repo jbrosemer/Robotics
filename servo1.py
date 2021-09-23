@@ -90,7 +90,7 @@ except KeyboardInterrupt:
     display.lcd_clear()
     #reset Servo angle
     kit.servo[0].angle = 0
-    kit.servo[1].angle = 0
+    kit.servo[1].angle = 180
     kit.servo[2].angle = 0
     print("Exit")
     #clear the lcd
