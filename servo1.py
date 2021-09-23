@@ -86,7 +86,7 @@ try:
         else:
             display.lcd_display_string(str(hours) + ":" + str(tensminutes) +str(onesminutes) + ":" + str(seconds),2)
         print(seconds)
-        if seconds%2 == 1:
+        if seconds%2 == 1 | multiplier > 1:
             led2.on()
         else:
             led2.off()
