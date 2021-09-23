@@ -43,6 +43,7 @@ try:
                     multiplier+=1
                     debouncer = 0
             else:
+                debouncer  = 0
                 #constantly check if normalize button is being pressed while in sped up time
         elif button2.is_pressed:
             #go back to current time and reset multiplier
