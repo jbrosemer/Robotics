@@ -58,9 +58,7 @@ try:
                     onesminutes += 1
                 elif multiplier > 100:
                     onesminutes += 2
-                else:
-                    print(onesminutes)
-                if onesminutes > 9:
+                if onesminutes > 8:
                     onesminutes = 0
                     tensminutes += 1
                     if tensminutes > 5:
